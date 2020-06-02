@@ -16,12 +16,16 @@ class App extends React.Component {
 
   // 利用類似綁定this的箭頭函式的語法
   handleClickAfterSeconds = (value) => {
+
+    // 利用箭頭函式綁定周邊的this值(也就是App的實體物件)
     setTimeout(() => {
       this.setState({ total: this.state.total + value })
     }, 1000)
   }
 
   handleClickEverySeconds = (value) => {
+    
+    // 利用箭頭函式綁定周邊的this值(也就是App的實體物件)
     setInterval(() => {
       this.setState({ total: this.state.total + value })
     }, 1000)
