@@ -18,13 +18,14 @@ function MyTestFunc(props) {
   useEffect(() => {
     // componentWillUnmount
     return () => {
-       // Your code here
-       console.log('MyTestFunc Child componentWillUnmount')
+      // Your code here
+      console.log('MyTestFunc Child componentWillUnmount')
     }
   }, [])
 
   return (
     <>
+      <h1>MyTestFunc</h1>
       <div onClick={() => setTotal(total + 1)}>{total}</div>
     </>
   )
