@@ -1,6 +1,7 @@
 import React from 'react'
 
 class App extends React.Component {
+  // Mounting(掛載階段) 只會呼叫一次
   constructor(props) {
     // 呼叫React.Component建構式
     super(props)
@@ -12,11 +13,13 @@ class App extends React.Component {
     console.log('constructor')
   }
 
+  // Mounting(掛載階段)，呈現後只會呼叫一次
   componentDidMount() {
     console.log('componentDidMount')
     console.log(document.getElementById('abc').innerHTML)
   }
 
+  // 更新階段，每次更新後會呼叫一次
   componentDidUpdate() {
     console.log('componentDidUpdate')
     console.log(document.getElementById('abc').innerHTML)
