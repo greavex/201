@@ -10,21 +10,21 @@ class MyTest extends React.Component {
     this.state = {
       total: 0,
     }
-    console.log('Child constructor')
+    console.log('MyTest Child constructor')
   }
 
   // Mounting(掛載階段)，呈現後只會呼叫一次
   componentDidMount() {
-    console.log('Child componentDidMount')
+    console.log('MyTest Child componentDidMount')
   }
 
   // 更新階段，每次更新後會呼叫一次
   componentDidUpdate() {
-    console.log('Child componentDidUpdate')
+    console.log('MyTest Child componentDidUpdate')
   }
 
   render() {
-    console.log('Child render')
+    console.log('MyTest Child render')
     return (
       <>
         <h1>MyTest</h1>
