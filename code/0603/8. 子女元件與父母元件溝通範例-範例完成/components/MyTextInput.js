@@ -13,6 +13,7 @@ function MyTextInput(props) {
 
       <button
         onClick={() => {
+          // 讓子女元件上層父母元件傳來的方法
           props.sendNameToMe(name)
         }}
       >

@@ -9,6 +9,7 @@ function App() {
       <h1>你好，{nameFromChild}</h1>
       <MyTextInput
         sendNameToMe={(text) => {
+          // 讓子女元件呼叫自己設定state的方法
           setNameFromChild(text)
         }}
       />
