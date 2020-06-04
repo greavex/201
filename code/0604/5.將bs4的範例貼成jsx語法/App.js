@@ -26,6 +26,7 @@ function App(props) {
     setTotal(total + value)
   }
 
+  // 參考：https://github.com/eyesofkids/201/issues/10
   return (
     <>
       <div className="container">
