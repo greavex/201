@@ -14,6 +14,9 @@ function App() {
           <h1 className="mt-5">待辨事項</h1>
           <hr />
           <div>
+            {/* 可控表單元素必要條件: 
+                1. value對應state值
+                2. onChange事件對應setState(setXXX)改變值的方法 */}
             <input
               type="text"
               value={item}
