@@ -7,12 +7,24 @@ function App() {
   // todo = { id: 123213, text:'買牛奶', completed: false }
   const [todos, setTodos] = useState([
     { id: 1591256594282, text: '買牛奶', completed: false },
-    { id: 1591256594281, text: '買iphone', completed: true },
+    { id: 1591256594281, text: '買iphone', completed: false },
     { id: 1591256594283, text: '學react', completed: false },
   ])
 
   // 用於文字輸入框輸入新的todo
   const [text, setText] = useState('')
+
+  // 利用id值尋找符合的todos裡的index，然後改變completed
+  const handleCompleted = (id) => {
+    const newTodos = [...todos]
+
+    const todoItemIndex = todos.findIndex((v, i) => v.id === id)
+
+    if (todoItemIndex !== -1) {
+      newTodos[todoItemIndex].completed = !newTodos[todoItemIndex].completed
+      setTodos(newTodos)
+    }
+  }
 
   return (
     <>
@@ -20,6 +32,7 @@ function App() {
       <main role="main" className="flex-shrink-0">
         <div className="container">
           <h1 className="mt-5">待辨事項</h1>
+
           <hr />
 
           {/* 可控表單元素必要條件: 
@@ -64,7 +77,10 @@ function App() {
                 // 利用id即為加入的時間日期
                 const date = new Date(value.id)
 
-                if (value.completed) return 
+                // 依照completed刪除掉，或改變render的樣式
+                if (value.completed) {
+                  return ''
+                }
 
                 // 列表項目(子元素)需要唯一的key值(id值的意思)
                 return (
@@ -76,10 +92,13 @@ function App() {
                     <button
                       type="button"
                       className="btn btn-secondary"
-                      onClick={() => {}}
+                      onClick={() => {
+                        handleCompleted(value.id)
+                      }}
                     >
                       完成
                     </button>
+
                     <span className="badge badge-primary badge-pill">
                       ⌚{date.toLocaleString()}
                     </span>
