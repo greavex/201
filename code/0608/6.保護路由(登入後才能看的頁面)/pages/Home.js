@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import MyBanner from '../components/MyBanner'
 
-function Home() {
+function Home(props) {
+  console.log(props)
   return (
     <>
       <MyBanner title="首頁" lead="首頁是一個網站的第一個看到的頁面" />
@@ -22,4 +23,4 @@ function Home() {
   )
 }
 
-export default Home
+export default withRouter(Home)

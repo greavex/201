@@ -10,6 +10,7 @@ import { Route, Redirect } from 'react-router-dom'
 // props 解構拉出children，和其它的組成一個其餘物件
 const ProtectedRoute = ({ children, ...rest }) => {
   console.log(children)
+  console.log(rest)
 
   return (
     <Route

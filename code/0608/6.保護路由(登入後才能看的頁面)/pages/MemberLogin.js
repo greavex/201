@@ -33,10 +33,10 @@ function MemberLogin(props) {
   // login成功時的callback
   const loginSuccessCallback = () => {
     alert('登入成功，跳回首頁')
-    props.history.push('/')
+    props.history.push('/', { from: '從登入頁來的' })
   }
 
-  // login成功時的callback
+  // logout成功時的callback
   const logoutSuccessCallback = () => {
     alert('登出成功，跳回上一頁')
     props.history.goBack()
@@ -62,7 +62,9 @@ function MemberLogin(props) {
     </button>
   )
 
-  const displayForm = !auth ? (
+  const displayForm = auth ? (
+    ''
+  ) : (
     <>
       <input
         className="form-control mb2"
@@ -92,8 +94,6 @@ function MemberLogin(props) {
         }}
       />
     </>
-  ) : (
-    ''
   )
 
   return (
