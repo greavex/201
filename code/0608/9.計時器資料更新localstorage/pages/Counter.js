@@ -14,7 +14,7 @@ function Counter(props) {
     </div>
   )
 
-  //
+  // 模擬componentDidMount
   useEffect(() => {
     // 開啟指示(spinner)
     setDataLoading(true)
@@ -23,7 +23,7 @@ function Counter(props) {
 
     // 得到值(字串) !!重要
     const initTotal = localStorage.getItem('total') || '0'
-    // 設定到total，轉為數字
+    // 設定到total，轉為數字 !!重要
     setTotal(+initTotal)
 
     // 1000ms(一秒後)關閉指示(spinner)
@@ -32,11 +32,10 @@ function Counter(props) {
     }, 1000)
   }, [])
 
+  // 模擬componentDidUpdate
   useEffect(() => {
     // 開啟指示(spinner)
     setDataLoading(true)
-
-    //console.log(localStorage.getItem('total'))
 
     // 設定值
     localStorage.setItem('total', total)
