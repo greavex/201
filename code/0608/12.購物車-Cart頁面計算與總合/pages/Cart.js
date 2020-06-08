@@ -42,7 +42,7 @@ function Cart() {
 
       //有的話就數量+1
       if (index !== -1) {
-        console.log('findindex', index)
+        //console.log('findindex', index)
         //每次只有加1個數量
         //newMycartDisplay[index].amount++
         //假設是加數量的
