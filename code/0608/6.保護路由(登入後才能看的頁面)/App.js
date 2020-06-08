@@ -56,6 +56,18 @@ function App(props) {
     loginSuccessCallback()
   }
 
+  const logoutProcess = (logoutSuccessCallback) => {
+    setName('')
+    setUsername('')
+    setPassword('')
+
+    // 認証改為false
+    setAuth(false)
+
+    // 執行成功的callback(來自MemberLogin)
+    logoutSuccessCallback()
+  }
+
   return (
     <Router>
       <>
@@ -77,6 +89,7 @@ function App(props) {
                 password={password}
                 setPassword={setPassword}
                 loginProcess={loginProcess}
+                logoutProcess={logoutProcess}
                 loginErrors={loginErrors}
                 auth={auth}
               />

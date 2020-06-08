@@ -24,7 +24,7 @@ function MyNavbar(props) {
       <Button
         variant="outline-light"
         onClick={() => {
-          props.history.goBack()
+          props.history.push('/memberlogin')
         }}
       >
         登出
