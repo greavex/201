@@ -7,7 +7,6 @@ function MyNavbar(props) {
 
   const loginButton = (
     <>
-      {' '}
       <Button
         variant="outline-light"
         onClick={() => {
@@ -47,9 +46,13 @@ function MyNavbar(props) {
           <Nav.Link as={NavLink} to="/about">
             關於我們
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/todoapp">
-            待辨事項
-          </Nav.Link>
+          {auth ? (
+            <Nav.Link as={NavLink} to="/todoapp">
+              待辨事項
+            </Nav.Link>
+          ) : (
+            ''
+          )}
           <Nav.Link as={NavLink} to="/product">
             產品
           </Nav.Link>
