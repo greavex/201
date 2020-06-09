@@ -31,9 +31,7 @@ function ProductList(props) {
   }
 
   // componentDidMount 一開始就會開始載入資料
-  useEffect(() => {
-    //updateCartToLocalStorage()
-  }, [])
+  useEffect(() => {}, [])
 
   // componentDidUpdate(相依mycart)
   // 每次total資料有變動就會3秒後關掉載入指示
