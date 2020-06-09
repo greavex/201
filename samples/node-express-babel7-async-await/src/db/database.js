@@ -4,8 +4,8 @@ import mysql from 'mysql2'
 const connection = {
   host: 'localhost',
   user: 'root',
-  password: 'root',
-  database: 'react',
+  password: '12345',
+  database: 'test',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
