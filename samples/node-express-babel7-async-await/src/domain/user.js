@@ -27,6 +27,12 @@ class User {
     return sql
   }
 
+  // login用
+  getUserUserByUsernameAndPasswordSQL() {
+    let sql = `SELECT * FROM USERS WHERE username = '${this.username}' AND password =  '${this.password}' LIMIT 0,1`
+    return sql
+  }
+
   // static是與實例化無關
   static getUserByQuerySQL(query) {
     const where = []

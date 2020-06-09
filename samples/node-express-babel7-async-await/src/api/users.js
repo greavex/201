@@ -74,6 +74,98 @@ async function executeSQL(
   }
 }
 
+// instance 物件實體，預設為空物件
+async function userLogin(sql, req, res, instance) {
+  try {
+    const [rows, fields] = await dbMysql2.promisePool.query(sql)
+
+    // 仿照json-server的回傳，有找到會回傳單一值，沒找到會回到空的物件字串
+    let result = {}
+    if (rows.length) {
+      result = rows[0]
+
+      req.session.regenerate(function(err) {
+        if (err) {
+          res.status(200).json({ status: 2, message: '登入失敗' })
+        }
+
+        req.session.loginId = result.id
+        req.session.loginName = result.name
+        req.session.loginEmail = result.email
+        req.session.loginUsername = result.username
+        req.session.loginCreatedDate = result.createDate
+
+        // 如果要用全訊息可以用以下的回傳
+        // res.json({ status: 0, message: '登入成功' })
+        res.status(200).json(result)
+      })
+    } else {
+      res.status(200).json({ status: 1, message: '帳號或密碼錯誤' })
+
+      //res.status(200).json(result)
+    }
+  } catch (error) {
+    // 錯誤處理
+    console.log(error)
+
+    // 顯示錯誤於json字串
+    res.status(200).json({
+      message: error,
+    })
+  }
+}
+
+// 以下為路由
+
+// 處理會員登入
+router.post('/login', function(req, res, next) {
+  let user = new User(
+    req.body.name,
+    req.body.username,
+    req.body.password,
+    req.body.email
+  )
+
+  // 回應都寫在userLogin方法裡(async-await)
+  userLogin(user.getUserUserByUsernameAndPasswordSQL(), req, res, user)
+})
+
+// 處理會員登出
+router.get('/logout', function(req, res, next) {
+  req.session.destroy(function(err) {
+    if (err) {
+      res.status(200).json({ status: 1, message: '登出失敗' })
+      return
+    }
+
+    // 清除所有的session
+    req.session = null
+
+    res.clearCookie('skey')
+    res.status(200).json({ status: 0, message: '登出成功' })
+  })
+})
+
+// 檢查是否登入
+router.get('/checklogin', function(req, res, next) {
+  const sess = req.session
+
+  const id = sess.loginId
+  const username = sess.loginUsername
+  const name = sess.loginName
+  const email = sess.loginEmail
+  const createDate = sess.loginCreatedDate
+
+  const isLogined = !!name
+
+  if (isLogined) {
+    res.status(200).json({ id, name, username, email, createDate })
+  } else {
+    // 登出狀態時回傳`{id:0}`
+    res.status(200).json({ id: 0 })
+  }
+})
+
 // get 處理獲取全部的資料列表
 // AND查詢加入`?name=eddy&email=XXX&username=XXXX
 router.get('/', (req, res, next) => {

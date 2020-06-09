@@ -1,11 +1,28 @@
 import express from 'express'
 import bodyparser from 'body-parser'
 import cors from 'cors'
+import session from 'express-session'
+import sessionFileStore from 'session-file-store'
 
 // 需匯入api
 import users from './api/users.js'
 
 const app = express()
+const FileStore = sessionFileStore(session)
+const identityKey = 'skey'
+
+app.use(
+  session({
+    name: identityKey,
+    secret: 'SECRET', // 用來對session id相關的cookie進行簽名
+    store: new FileStore(), // 本地儲存session（純文字文件，也可以選擇其他store，例如redis的）
+    saveUninitialized: false, // 是否自動儲存未初始化的會話，建議false
+    resave: false, // 是否每次都重新儲存會話，建議false
+    cookie: {
+      maxAge: 30 * 60 * 1000, // 30分鐘 有效期，單位是毫秒
+    },
+  })
+)
 
 app.use(cors())
 app.use(bodyparser.json())
