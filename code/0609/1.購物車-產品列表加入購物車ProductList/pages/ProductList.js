@@ -8,14 +8,14 @@ function ProductList() {
     // 開啟載入指示
     //setDataLoading(true)
 
-    const currentCart = JSON.parse(localStorage.getItem('cart')) || '[]'
+    const currentCart = JSON.parse(localStorage.getItem('cart')) || []
 
-    //console.log('currentCart', currentCart)
+    console.log('currentCart', currentCart)
 
     const newCart = [...currentCart, value]
     localStorage.setItem('cart', JSON.stringify(newCart))
 
-    //console.log('newCart', newCart)
+    console.log('newCart', newCart)
     // 設定資料
     setMycart(newCart)
     alert('已成功加入購物車')
@@ -23,7 +23,7 @@ function ProductList() {
 
   // componentDidMount 一開始就會開始載入資料
   useEffect(() => {
-    //getTotalFromLocalStorage()
+    //updateCartToLocalStorage()
   }, [])
 
   // componentDidUpdate(相依mycart)
@@ -63,10 +63,10 @@ function ProductList() {
             </p>
             <p className="card-text text-danger">NTD 15000元</p>
           </div>
-          <div class="card-footer">
+          <div className="card-footer">
             <button
               type="button"
-              class="btn btn-success"
+              className="btn btn-success"
               onClick={() => {
                 updateCartToLocalStorage({
                   id: 1,
@@ -94,10 +94,10 @@ function ProductList() {
             </p>
             <p className="card-text text-danger">NTD 200元</p>
           </div>
-          <div class="card-footer">
+          <div className="card-footer">
             <button
               type="button"
-              class="btn btn-success"
+              className="btn btn-success"
               onClick={() => {
                 updateCartToLocalStorage({
                   id: 3,
@@ -126,10 +126,10 @@ function ProductList() {
             </p>
             <p className="card-text text-danger">NTD 21000元</p>
           </div>
-          <div class="card-footer">
+          <div className="card-footer">
             <button
               type="button"
-              class="btn btn-success"
+              className="btn btn-success"
               onClick={() => {
                 updateCartToLocalStorage({
                   id: 2,
