@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "iphone xs",
+    "amount": 1,
+    "price": 15000
+  },
+  {
+    "id": 2,
+    "name": "ipad",
+    "amount": 1,
+    "price": 20000
+  },
+  {
+    "id": 2,
+    "name": "ipad",
+    "amount": 1,
+    "price": 20000
+  },
+  {
+    "id": 2,
+    "name": "ipad",
+    "amount": 1,
+    "price": 20000
+  },
+  {
+    "id": 1,
+    "name": "iphone xs",
+    "amount": 1,
+    "price": 15000
+  },
+  {
+    "id": 3,
+    "name": "book",
+    "amount": 1,
+    "price": 200
+  },
+  {
+    "id": 3,
+    "name": "book",
+    "amount": 1,
+    "price": 200
+  },
+  {
+    "id": 2,
+    "name": "ipad",
+    "amount": 1,
+    "price": 20000
+  }
+]
