@@ -21,7 +21,7 @@ function App(props) {
       <button
         onClick={() => {
           // 改用dispatch發送動作，改變redux裡的store中記錄的state值
-          props.dispatch({ type: 'MINUS_VALUE', value: 1 })
+          props.dispatch({ type: 'SUB_VALUE', value: 1 })
         }}
       >
         -1
