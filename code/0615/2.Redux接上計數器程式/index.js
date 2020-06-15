@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.scss'
+//import './index.scss'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
@@ -11,13 +11,21 @@ import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 
 // 第二步 @reducer
-// action = { type: 'ADD_VALUE', value: 2 }
-function counter(state = 0, action) {
+// action = { type: 'ADD_VALUE', value: 1 }
+function counter(state = 999, action) {
   switch (action.type) {
     case 'ADD_VALUE':
       return state + action.value
-    case 'MINUS_VALUE':
+    case 'SUB_VALUE':
       return state - action.value
+    //預設值用於初始化store用的
+    default:
+      return state
+  }
+}
+
+function todos(state = [{ id: 123, text: 'hello' }], action) {
+  switch (action.type) {
     default:
       return state
   }
@@ -27,9 +35,11 @@ function counter(state = 0, action) {
 // 傳入值為物件，用物件的es6的簡寫法
 const rootReducer = combineReducers({
   counter,
+  todos,
 })
 
 // 第三步 由rootReducer建立store
+//const store = createStore(rootReducer)
 const store = createStore(
   rootReducer /* preloadedState, */,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -37,7 +47,7 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
-   {/* 最上層的react與redux綁定用的元件，屬性即為上面建立的store */}
+    {/* 最上層的react與redux綁定用的元件，屬性即為上面建立的store */}
     <Provider store={store}>
       <App />
     </Provider>
